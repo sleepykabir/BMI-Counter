@@ -33,7 +33,7 @@ document.getElementById("calculateBtn").addEventListener("click", () => {
   } else if (bmi < 30) {
     status = "Overweight";
     advice = "You’re slightly above the healthy range. Try cutting back on processed foods, sugary drinks, and increase your physical activity. Walking, swimming, or cycling regularly can make a big difference.";
-    link = "https://www.healthline.com/nutrition/weight-loss-for-beginners";
+    link = "https://www.anytimefitness.com/blog/weight-loss-plan-for-beginners";
   } else if (bmi < 35) {
     status = "Obese (Class I)";
     advice = "You are in the first stage of obesity. Consider professional guidance for your diet and workout plan. Focus on portion control and regular physical activities.";
@@ -53,4 +53,5 @@ document.getElementById("calculateBtn").addEventListener("click", () => {
   learnMore.href = link;
   learnMore.style.display = "inline-block";
 });
+
 
