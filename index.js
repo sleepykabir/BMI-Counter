@@ -1,64 +1,56 @@
-// Scroll to form
-document.getElementById("startBtn").addEventListener("click", () => {
+document.getElementById("scrollBtn").addEventListener("click", () => {
   document.getElementById("bmiSection").scrollIntoView({ behavior: "smooth" });
 });
 
-// Calculate BMI and show results
-document.getElementById("bmiForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const gender = document.getElementById("gender").value;
+document.getElementById("calculateBtn").addEventListener("click", () => {
   const height = parseFloat(document.getElementById("height").value);
   const weight = parseFloat(document.getElementById("weight").value);
+  const gender = document.querySelector('input[name="gender"]:checked');
   const resultDiv = document.getElementById("result");
+  const adviceDiv = document.getElementById("advice");
+  const learnMore = document.getElementById("learnMore");
 
   if (!height || !weight || !gender) {
-    resultDiv.innerHTML = "⚠️ Please fill all fields correctly.";
+    resultDiv.textContent = "⚠️ Please fill all the fields."; 
+    adviceDiv.textContent = "";
+    learnMore.style.display = "none";
     return;
   }
 
-  const bmi = weight / (height * height);
+  const bmi = (weight / (height * height)).toFixed(1);
   let status = "";
   let advice = "";
   let link = "";
 
   if (bmi < 18.5) {
     status = "Underweight";
-    advice = "Your BMI indicates you are underweight. Focus on eating more calorie-dense, nutrient-rich foods such as nuts, avocados, eggs, and lean proteins. Strength training can also help build healthy muscle mass.";
+    advice = "You are underweight. It’s important to eat a nutrient-rich diet with enough calories, proteins, and healthy fats. Add more eggs, milk, peanut butter, and balanced meals to your daily routine.";
     link = "https://www.healthline.com/nutrition/how-to-gain-weight";
   } else if (bmi < 25) {
-    status = "Healthy";
-    advice = "Congratulations! You are in a healthy BMI range. Maintain your balanced lifestyle with regular exercise, hydration, and a diet rich in vegetables, lean proteins, and whole grains.";
-    link = "https://www.healthline.com/nutrition/healthy-eating-tips";
+    status = "Normal weight";
+    advice = "Great job! You’re maintaining a healthy balance. Keep up your current habits, stay active, and eat a balanced diet rich in vegetables, whole grains, and lean proteins.";
+    link = "https://www.who.int/news-room/fact-sheets/detail/healthy-diet";
   } else if (bmi < 30) {
     status = "Overweight";
-    advice = "Your BMI indicates that you are slightly overweight. Try incorporating more daily activity like walking or light jogging and reduce your intake of sugary or processed foods while increasing vegetables and protein.";
-    link = "https://www.medicalnewstoday.com/articles/weight-loss-diet-plan";
+    advice = "You’re slightly above the healthy range. Try cutting back on processed foods, sugary drinks, and increase your physical activity. Walking, swimming, or cycling regularly can make a big difference.";
+    link = "https://www.healthline.com/nutrition/weight-loss-for-beginners";
   } else if (bmi < 35) {
-    status = "Obese Class I";
-    advice = "You fall into Obesity Class I. It’s advisable to follow a structured diet and workout plan. Reducing portion sizes, increasing fiber intake, and regular cardio can significantly help. Consult a dietitian if possible.";
-    link = "https://www.nhs.uk/live-well/healthy-weight/start-the-nhs-weight-loss-plan/";
+    status = "Obese (Class I)";
+    advice = "You are in the first stage of obesity. Consider professional guidance for your diet and workout plan. Focus on portion control and regular physical activities.";
+    link = "https://www.medicalnewstoday.com/articles/323972";
   } else if (bmi < 40) {
-    status = "Obese Class II";
-    advice = "Your BMI suggests a higher level of obesity. Consider seeking medical advice for a personalized nutrition plan. Focus on slow, steady weight loss through consistent physical activity and reduced calorie intake.";
-    link = "https://www.cdc.gov/healthyweight/losing_weight/index.html";
+    status = "Obese (Class II)";
+    advice = "You are in obesity class II. The health risks increase significantly. Talk to a doctor or nutritionist to design a safe and structured plan for weight management.";
+    link = "https://www.nhs.uk/live-well/healthy-weight/";
   } else {
-    status = "Obese Class III";
-    advice = "This BMI level is associated with serious health risks. It’s important to consult a healthcare provider. Combining a medically supervised diet with gentle, consistent exercise can bring improvement over time.";
-    link = "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight";
+    status = "Obese (Class III)";
+    advice = "You are in the severe obesity range. It’s crucial to seek medical advice immediately. A doctor can help you create a plan involving nutrition, activity, and medical supervision.";
+    link = "https://www.cdc.gov/obesity/adult/defining.html";
   }
 
-  resultDiv.innerHTML = `
-    <strong>Your BMI:</strong> ${bmi.toFixed(2)}<br>
-    <strong>Status:</strong> ${status}<br><br>
-    <strong>Advice:</strong> ${advice}<br><br>
-    <a href="${link}" target="_blank" class="learn-more">Learn More</a>
-  `;
+  resultDiv.textContent = `Your BMI is ${bmi} — ${status}`;
+  adviceDiv.textContent = advice;
+  learnMore.href = link;
+  learnMore.style.display = "inline-block";
 });
 
-// Simple cursor
-const cursor = document.querySelector(".cursor");
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
