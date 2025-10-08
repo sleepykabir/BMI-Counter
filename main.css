@@ -1,182 +1,183 @@
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  cursor: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-  background: linear-gradient(135deg, #0e1a2b, #1e3a5f);
-  color: #fff;
-  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  background: url('health.jpg') no-repeat center center fixed;
+  background-size: cover;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* Dark overlay to make text visible */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.7);
+  z-index: -1;
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Intro Section */
 .intro {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  animation: fadeIn 1.5s ease;
 }
 
-.intro h1 {
-  font-size: 4rem;
-  color: #78baff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-  animation: fadeIn 2s ease-in-out;
+.intro-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-.intro p {
-  font-size: 1.3rem;
-  color: #cfd9e8;
-  margin: 10px 0 30px;
-  animation: fadeIn 2.5s ease-in-out;
-}
-
-#startBtn {
-  padding: 15px 45px;
-  background: #3385ff;
-  border: none;
-  border-radius: 30px;
-  color: white;
+.intro-content p {
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  color: #dbeafe;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
 }
 
-#startBtn:hover {
-  background: #539fff;
+#scrollBtn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#scrollBtn:hover {
+  background: #2563eb;
   transform: scale(1.05);
 }
 
 /* BMI Section */
-#bmiSection {
-  height: 100vh;
+.bmi-section {
+  min-height: 100vh;
+  padding: 5rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.bmi-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 15px;
-  padding: 45px 60px;
+.bmi-container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  max-width: 550px;
   text-align: center;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.bmi-box h2 {
-  margin-bottom: 25px;
-  color: #78baff;
-  font-size: 2rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  font-size: 1rem;
-  color: #cfd9e8;
-  text-align: left;
-}
-
-input, select {
-  padding: 12px;
-  border: 1.5px solid #78baff;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-input::placeholder {
-  color: #ccd5e6;
-}
-
-select option {
-  background: #1e3a5f;
-  color: white;
-}
-
-input:focus, select:focus {
-  border-color: #539fff;
-  box-shadow: 0 0 8px #539fff;
-}
-
-button[type="submit"] {
-  background: #3385ff;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background: #539fff;
-  transform: scale(1.03);
-}
-
-#result {
-  margin-top: 25px;
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #f6e8c8;
-  font-weight: 500;
-  text-align: left;
-}
-
-.learn-more {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #3385ff;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   transition: 0.3s;
 }
 
-.learn-more:hover {
-  background: #539fff;
+.bmi-container:hover {
+  transform: scale(1.01);
+}
+
+.bmi-container h2 {
+  color: #93c5fd;
+  margin-bottom: 1.5rem;
+}
+
+.input-box {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #bfdbfe;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: 0.3s;
+}
+
+.input-box input:focus {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.radio-group label {
+  display: inline-flex;      /* keeps radio and text on the same line */
+  align-items: center;       /* vertically centers radio with text */
+  margin-right: 1rem;
+  color: #e0f2fe;
+}
+
+
+#calculateBtn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+#calculateBtn:hover {
+  background: #2563eb;
   transform: scale(1.05);
 }
 
-/* Cursor */
-.cursor {
-  position: fixed;
-  width: 18px;
-  height: 18px;
-  background: white;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.8;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease-out;
-  z-index: 9999;
+.result {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fde68a;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.advice {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+  text-align: justify;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+.learn-more-btn {
+  display: inline-block;
+  margin-top: 1.8rem;
+  padding: 0.9rem 1.8rem;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.learn-more-btn:hover {
+  background: #059669;
+  transform: scale(1.05);
 }
