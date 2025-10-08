@@ -3,41 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMI Calculator</title>
+  <title>BMI Health Checker</title>
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class="intro">
-    <h1>Hello!</h1>
-    <p>Welcome to your personal BMI health checker.</p>
-    <button id="startBtn">Check Your BMI</button>
-  </div>
-
-  <section id="bmiSection">
-    <div class="bmi-box">
-      <h2>Let's Calculate Your BMI</h2>
-      <form id="bmiForm">
-        <label for="gender">Gender:</label>
-        <select id="gender" required>
-          <option value="">Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-
-        <label for="height">Height (meters):</label>
-        <input type="number" id="height" step="0.01" placeholder="e.g. 1.75" required>
-
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" step="0.1" placeholder="e.g. 70" required>
-
-        <button type="submit">Calculate BMI</button>
-      </form>
-      <div id="result"></div>
+  <div class="overlay"></div> <!-- dark overlay over background -->
+  
+  <section class="intro" id="intro">
+    <div class="intro-content">
+      <h1>Hello!</h1>
+      <p>Welcome to the BMI Health Checker — discover your health status and get advice for a better lifestyle.</p>
+      <button id="scrollBtn">Check BMI</button>
     </div>
   </section>
 
-  <div class="cursor"></div>
+  <section class="bmi-section" id="bmiSection">
+    <div class="bmi-container">
+      <h2>Calculate Your BMI</h2>
+
+      <div class="input-box">
+        <label>Gender:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="male"> Male</label>
+          <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" step="0.01" placeholder="Enter your height">
+      </div>
+
+      <div class="input-box">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" step="0.1" placeholder="Enter your weight">
+      </div>
+
+      <button id="calculateBtn">Calculate</button>
+
+      <div class="result" id="result"></div>
+      <div class="advice" id="advice"></div>
+      <a id="learnMore" href="#" target="_blank" class="learn-more-btn">Learn More</a>
+    </div>
+  </section>
 
   <script src="index.js"></script>
 </body>
